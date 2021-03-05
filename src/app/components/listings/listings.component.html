@@ -1,0 +1,21 @@
+<h2>Stays</h2>
+
+<div class="container">
+    <div class="row row-cols-2 row-cols-lg-6 g-3 g-lg-3">
+        <div class="col" *ngFor="let list of servListings.listings">
+            <div class="card">
+                <img src="{{list.imageUrl}}" class="card-img-top" alt="{{list.imageUrl}}">
+                <div class="card-body">
+                    <h5 class="card-title">{{list.name}}</h5>
+                    <p class="card-text">{{list.basePrice}}/night</p>
+                    <a routerLink="/view-list/{{list.id}}" class="btn btn-primary">
+                        Ver más
+                    </a>
+                    <a routerLink="/edit-list/{{list.id}}" class="btn btn-danger" *ngIf="servUsuario.logueado.value">
+                        Editar
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

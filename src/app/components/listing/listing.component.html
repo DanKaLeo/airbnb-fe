@@ -1,0 +1,59 @@
+<div *ngIf="list">
+    <h2>{{list.name | uppercase}}</h2>
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-body">
+                    <img src="{{list.imageUrl}}" alt="{{list.imageUrl}}">
+                    <h3 class="card-title">{{list.name}}</h3>
+                    <p class="card-text">{{list.description}}</p>
+                    <p *ngIf="list.isPetsAllowed" class="card-text">Pets allowed: YES</p>
+                    <p *ngIf="!list.isPetsAllowed" class="card-text">Pets allowed: NO</p>
+                    <p class="card-text">Adults: {{list.adults}}</p>
+                    <p class="card-text">Children: {{list.children}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">{{list.name}}</h3>
+                    <p class="card-text">
+                        <mat-form-field class="example-form-field" appearance="fill">
+                            <mat-label>DateCheck</mat-label>
+                            <mat-date-range-input [formGroup]="DateCheck" [rangePicker]="campaignOnePicker"
+                                [min]="today">
+                                <input matStartDate placeholder="Start date" formControlName="start">
+                                <input matEndDate placeholder="End date" formControlName="end">
+                            </mat-date-range-input>
+                            <mat-datepicker-toggle matSuffix [for]="campaignOnePicker"></mat-datepicker-toggle>
+                            <mat-date-range-picker #campaignOnePicker></mat-date-range-picker>
+                        </mat-form-field><br>
+                        <button class="btn btn-primary" (click)="checkout()">Check</button>
+                    </p>
+                    <div *ngIf="respuestaG !== undefined">
+                        <div class="card" style="width: 18rem;">
+                            <div class="card-header">
+                                <strong>Total: {{respuestaG.totalFinal}}</strong>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">Estadia: {{respuestaG.estadia}}</li>
+                                <li class="list-group-item">Costo por noche: {{respuestaG.totalNoches}}</li>
+                                <li class="list-group-item">Descuento: {{respuestaG.totalDescuento}}</li>
+                                <li class="list-group-item">Limpieza: {{list.cleaningFee}}</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div *ngIf="respuestaB !== undefined">
+                        <div class="card" style="width: 18rem;">
+                            <div class="card-header">
+                                <strong>{{respuestaB.mensaje}}</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

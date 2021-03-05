@@ -1,0 +1,135 @@
+<div *ngIf="list">
+    <div class="container-fluid">
+        <div class="row m-1">
+            <div class="col-lg">
+                <form [formGroup]="listingForm">
+                    <h2>{{list.name | uppercase}}</h2>
+
+                    <input type="hidden" id="i-id" name="e-id" placeholder="id">
+
+                    <div class="form-group row" id="fr-ownerId">
+                        <label for="i-ownerId" class="col-sm-3 control-label text-nowrap"
+                            id="lbl-i-ownerId">ownerId</label>
+                        <div class="col-sm-9">
+                            <select class="form-select" formControlName="ownerId" id="ownerId">
+                                <option *ngFor="let user of servUser.users" [value]="user.id">
+                                    {{user.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group row" id="fr-name">
+                        <label for="i-name" class="col-sm-3 control-label text-nowrap" id="lbl-i-name">Name</label>
+                        <div class="col-sm-9">
+                            <input type="text" autocomplete="off" class="form-control" placeholder="name"
+                                formControlName="name">
+                        </div>
+                    </div>
+
+                    <div class="form-group row" id="fr-slug">
+                        <label for="i-slug" class="col-sm-3 control-label text-nowrap" id="lbl-i-slug">Slug</label>
+                        <div class="col-sm-9">
+                            <input type="text" autocomplete="off" class="form-control" placeholder="slug"
+                                formControlName="slug">
+                        </div>
+                    </div>
+
+                    <div class="form-group row" id="fr-description">
+                        <label for="i-description" class="col-sm-3 control-label text-nowrap"
+                            id="lbl-i-description">Description</label>
+                        <div class="col-sm-9">
+                            <textarea class="form-control" placeholder="Descripcion" formControlName="description"
+                                rows="3"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group row" id="fr-adults">
+                        <label for="i-adults" class="col-sm-3 control-label text-nowrap"
+                            id="lbl-i-adults">adults</label>
+                        <div class="col-sm-9">
+                            <input type="text" autocomplete="off" class="form-control" placeholder="adults"
+                                formControlName="adults">
+                        </div>
+                    </div>
+
+                    <div class="form-group row" id="fr-children">
+                        <label for="i-children" class="col-sm-3 control-label text-nowrap"
+                            id="lbl-i-children">children</label>
+                        <div class="col-sm-9">
+                            <input type="text" autocomplete="off" class="form-control" placeholder="children"
+                                formControlName="children">
+                        </div>
+                    </div>
+
+                    <div class="form-group row" id="fr-isPetsAllowed">
+                        <label for="i-isPetsAllowed" class="col-sm-3 control-label text-nowrap"
+                            id="lbl-i-isPetsAllowed">isPetsAllowed</label>
+                        <div class="col-sm-9">
+                            <select class="form-select" id="isPetsAllowed" formControlName="isPetsAllowed">
+                                <option value="true">Yes</option>
+                                <option value="false">No</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group row" id="fr-basePrice">
+                        <label for="i-basePrice" class="col-sm-3 control-label text-nowrap"
+                            id="lbl-i-basePrice">basePrice</label>
+                        <div class="col-sm-9">
+                            <input type="text" autocomplete="off" class="form-control" placeholder="basePrice"
+                                formControlName="basePrice">
+                        </div>
+                    </div>
+
+                    <div class="form-group row" id="fr-cleaningFee">
+                        <label for="i-cleaningFee" class="col-sm-3 control-label text-nowrap"
+                            id="lbl-i-cleaningFee">cleaningFee</label>
+                        <div class="col-sm-9">
+                            <input type="text" autocomplete="off" class="form-control" placeholder="cleaningFee"
+                                formControlName="cleaningFee">
+                        </div>
+                    </div>
+
+                    <div class="form-group row" id="fr-imageUrl">
+                        <label for="i-imageUrl" class="col-sm-3 control-label text-nowrap"
+                            id="lbl-i-imageUrl">imageUrl</label>
+                        <div class="col-sm-9">
+                            <input type="text" autocomplete="off" class="form-control" placeholder="imageUrl"
+                                formControlName="imageUrl">
+                        </div>
+                    </div>
+
+                    <div class="form-group row" id="fr-weeklyDiscount">
+                        <label for="i-weeklyDiscount" class="col-sm-3 control-label text-nowrap"
+                            id="lbl-i-weeklyDiscount">weeklyDiscount</label>
+                        <div class="col-sm-9">
+                            <input type="text" autocomplete="off" class="form-control" placeholder="weeklyDiscount"
+                                formControlName="weeklyDiscount">
+                        </div>
+                    </div>
+
+                    <div class="form-group row" id="fr-monthlyDiscount">
+                        <label for="i-monthlyDiscount" class="col-sm-3 control-label text-nowrap"
+                            id="lbl-i-monthlyDiscount">monthlyDiscount</label>
+                        <div class="col-sm-9">
+                            <input type="text" autocomplete="off" class="form-control" placeholder="monthlyDiscount"
+                                formControlName="monthlyDiscount">
+                        </div>
+                    </div>
+
+                    <div class="form-group row" id="fr-SpecialPrices">
+                        <label for="i-SpecialPrices" class="col-sm-3 control-label text-nowrap"
+                            id="lbl-i-SpecialPrices">SpecialPrices</label>
+                        <div class="col-sm-9">
+                            <input type="text" autocomplete="off" class="form-control" placeholder="SpecialPrices"
+                                formControlName="SpecialPrices">
+                        </div>
+                    </div>
+
+                    <button type="button" class="btn btn-primary" id="btnSave" (click)="save()"
+                        [disabled]="!servUser.logueado.value">Check Out</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
